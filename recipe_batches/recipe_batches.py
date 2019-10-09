@@ -17,7 +17,19 @@ def recipe_batches(recipe, ingredients):
     return min(results)
 
 
-print(recipe_batches({'milk': 100, 'butter': 5, 'flour': 4, 'sugar': 10}, {
+# def recipe_batches(recipe, ingredients):
+#     least = 1000000
+#     for key in recipe:
+#         if key in ingredients:
+#             turns = ingredients[key] // recipe[key]
+#             if turns < least:
+#                 least = turns
+#         else:
+#             return 0
+#     return least
+
+
+print(recipe_batches({'milk': 100, 'butter': 5, 'flour': 4, 'salt': 10}, {
       'milk': 1288, 'flour': 9, 'sugar': 95, 'butter': 9}))
 
 
