@@ -19,17 +19,18 @@ import sys
 
 def eating_cookies(n, cache={}):
     if n == 0:
-        cache[n] = 1
+        return 1
     if n == 1:
-        cache[n] = 1
+        return 1
     if n == 2:
-        cache[n] = 2
+        return 2
     if n > 2:
-        cache[n] = eating_cookies(
-            n-3, cache) + eating_cookies(n-2, cache) + eating_cookies(n-1, cache)
-        # return cache[n]
-    # print(cache)
-    return cache[n]
+        if n in cache:
+            return cache[n]
+        else:
+            cache[n] = eating_cookies(
+                n-3, cache) + eating_cookies(n-2, cache) + eating_cookies(n-1, cache)
+        return cache[n]
 
 
 if __name__ == "__main__":
