@@ -4,9 +4,13 @@ import sys
 
 
 def making_change(amount, denominations, cache=[]):
+    # setup cache as list
     cache = [1]+[0]*amount
+    # loop through each coin
     for coin in denominations:
+        # loop through all amounts between coin and amount total
         for i in range(coin, amount+1):
+            # build cache with number of possible ways to form amount - coin
             cache[i] += cache[i-coin]
     return cache[amount]
 
