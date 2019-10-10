@@ -4,12 +4,17 @@ import math
 
 
 def recipe_batches(recipe, ingredients):
+    # create results list with same length as recipe dictionary
     results = [0] * len(recipe.values())
+    # find differences between recipe and ingredient dictionaries
     diff = set(recipe.keys()) - set(ingredients.keys())
+    # add missing recipe keys to ingredients dictionary with a value of zero
     for d in diff:
         ingredients[d] = 0
+    # create lists of values for recipes and ingredients
     ingredients_values = list(ingredients.values())
     recipe_values = list(recipe.values())
+    # loop through results, batches is quotient of ingredient value divided by recipe value (assumes keys are in same order)
     for i in range(len(results)):
         results[i] = int(ingredients_values[i] / recipe_values[i])
     if min(results) < 1:
@@ -18,12 +23,17 @@ def recipe_batches(recipe, ingredients):
 
 
 # def recipe_batches(recipe, ingredients):
+#     # set large number for least batches
 #     least = 1000000
+#     # loop through keys in recipe dictionary
 #     for key in recipe:
+#         # check if the key from recipe exists in ingredients dictionary
 #         if key in ingredients:
-#             turns = ingredients[key] // recipe[key]
-#             if turns < least:
-#                 least = turns
+#             # if key exists, get quotient of ingredient amt divided by recipe amt
+#             batches = ingredients[key] // recipe[key]
+#             # if quotient is less than the least batch number so far, set least to quotient
+#             if batches < least:
+#                 least = batches
 #         else:
 #             return 0
 #     return least
